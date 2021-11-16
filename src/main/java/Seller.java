@@ -6,12 +6,13 @@ public class Seller {
      * A unique value that is given to every new "Customer"
      * as a way to simplify indentification.
      */
-    private  int sellerID;
+    private final int sellerID;
     private double sellerNIP;
     private String sellerAdress;
     private String sellerPostalCode;
     private String sellerTown;
-    public Seller(final Scanner input) {
+    public Seller(final Scanner input,final int sellerID) {
+        this.sellerID=sellerID;
         try {
             System.out.println("Podaj imię i nazwisko sprzedawcy lub nazwę firmy");
             sellerName = input.nextLine();

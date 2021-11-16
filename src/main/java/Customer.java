@@ -6,13 +6,14 @@ public class Customer {
      * A unique value that is given to every new "Customer"
      * as a way to simplify database usage.
      */
-    private  int customerID;
+    private final int customerID;
     private double customerNIP;
     private String customerAdress;
     private String customerPostalCode;
     private String customerTown;
 
-    public Customer(final Scanner input) {
+    public Customer(final Scanner input, final int customerID) {
+        this.customerID=customerID;
         try {
             System.out.println("Podaj imię i nazwisko klienta lub nazwę firmy");
             customerName = input.nextLine();

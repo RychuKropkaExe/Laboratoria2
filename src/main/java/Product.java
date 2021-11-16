@@ -1,24 +1,21 @@
 import java.util.Scanner;
 
 public class Product {
+    private final int productID;
     /**
      * Variable to simplify invoice making process, so that the number of product
-     * could be definied in choosen product itself.
+     * could be stored in product instance itself.
      */
     private int productCounter;
     private String productName;
     private Double productPrice;
     private Double priceTax;
     /**
-     * A uniqe value to every Product as a way of simple indentification.
-     */
-    private int productID;
-
-    /**
      * A constructor to initlize a Product and add it to Products list.
      * @param input a scanner, nothing special.
      */
-    public Product(final Scanner input) {
+    public Product(final Scanner input, int productID) {
+        this.productID=productID;
         System.out.println("Podaj nazwę produktu");
         try {
             productName = input.nextLine();
@@ -29,5 +26,25 @@ public class Product {
         } catch (Exception e) {
             System.out.println("Wystapił błąd, proszę spróbować ponownie");
         }
+    }
+
+    public int getProductID() {
+        return productID;
+    }
+
+    public Double getPriceTax() {
+        return priceTax;
+    }
+
+    public Double getProductPrice() {
+        return productPrice;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public int getProductCounter() {
+        return productCounter;
     }
 }
