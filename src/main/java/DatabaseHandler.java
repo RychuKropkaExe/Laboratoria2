@@ -3,11 +3,12 @@ import java.util.Scanner;
 
 
 public class DatabaseHandler {
+    protected int customerCounter=0;
+    protected int sellerCounter=0;
+    protected int productCounter=0;
+    protected int invoiceCounter=0;
     protected ArrayList<Customer> customersList = new ArrayList<>();
-    public void setcustomersList(Customer newCustomer){
-        customersList.add(newCustomer);
-    }
-    public ArrayList<Customer> getcustomersList(){
-        return customersList;
-    }
+    protected ArrayList<Seller> sellersList = new ArrayList<>();
+    protected ArrayList<Product> productsList = new ArrayList<>();
+    protected ArrayList<Invoice> invoicesList = new ArrayList<>();
 }

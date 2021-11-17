@@ -47,4 +47,8 @@ public class Product {
     public int getProductCounter() {
         return productCounter;
     }
+
+    public void setProductCounter(int productCounter) {
+        this.productCounter = productCounter;
+    }
 }

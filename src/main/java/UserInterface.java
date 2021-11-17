@@ -20,7 +20,7 @@ public class UserInterface {
                     + "Wybierz czynność którą chcesz wykonać:");
             System.out.println("1: Wystawienie nowej faktury \n"
                     + "2: Podgląd faktury \n"
-                    + "3: Wprowadzenie nowego produktu/towaru lub usługi \n"
+                    + "3: Wprowadzenie nowego produktu/towaru \n"
                     + "4: Wyjdź");
             try {
                 choosenValue = Integer.parseInt(scanner.nextLine());
@@ -35,7 +35,7 @@ public class UserInterface {
                     AppManager.showInvoice();
                     break;
                 case 3:
-                    AppManager.newValue();
+                    AppManager.newValue(scanner);
                     break;
                 case 4:
                     scanner.close();

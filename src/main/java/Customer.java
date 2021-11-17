@@ -24,7 +24,7 @@ public class Customer {
             System.out.println("Podaj numer budynku");
             customerAdress = input.nextLine();
             System.out.println("Podaj kod pocztowy");
-            customerPostalCode = input.next();
+            customerPostalCode = input.nextLine();
         } catch (Exception e) {
             System.out.println("Wystąpił Błąd, proszę spróbować jeszcze raz");
         }
