@@ -143,7 +143,7 @@ public class AppManager {
         System.out.println("Podatek" +  " Wartość podatku");
         for(Product product : display.getProducts()) {
             counter++;
-            System.out.print(counter + " ");
+            System.out.print(counter + "  ");
             product.printProduct();
         }
         counter=0;
