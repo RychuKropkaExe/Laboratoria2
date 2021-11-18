@@ -110,6 +110,9 @@ public class AppManager {
         } else {
             System.out.println("Brak faktur do wyświetlenia");
         }
+        Invoice display = dbhandler.invoicesList.get(choosenOption);
+        System.out.println("-----------------------------------------------------------------------------");
+        System.out.println(display.getDate());
 
     }
     public static void newValue(Scanner input) {
