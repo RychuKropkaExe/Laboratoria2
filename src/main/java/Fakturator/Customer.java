@@ -22,7 +22,7 @@ public class Customer {
             customerNIP = Double.parseDouble(input.nextLine());
             System.out.println("Podaj miasto zamieszkania/siedziby");
             customerTown = input.nextLine();
-            System.out.println("Podaj numer budynku");
+            System.out.println("Podaj ulicę i numer budynku");
             customerAdress = input.nextLine();
             System.out.println("Podaj kod pocztowy");
             customerPostalCode = input.nextLine();
@@ -53,5 +53,12 @@ public class Customer {
 
     public String getCustomerName() {
         return customerName;
+    }
+    public void printCustomer() {
+        System.out.println(customerName);
+        System.out.println(customerNIP);
+        System.out.println(customerTown);
+        System.out.println(customerAdress);
+        System.out.println(customerPostalCode);
     }
 }

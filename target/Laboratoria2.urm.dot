@@ -1,0 +1,22 @@
+digraph domain {
+  edge [ fontsize = 11 ];
+  node [ shape=record ];
+  subgraph cluster_0 {
+    label = "Fakturator";
+    AppManager [ label = "{AppManager | + invoiceMaker(input : Scanner)\l+ newValue(input : Scanner)\l+ showInvoice(input : Scanner)\l}" ] 
+    Customer [ label = "{Customer | + getCustomerAdress() : String\l+ getCustomerID() : int\l+ getCustomerNIP() : double\l+ getCustomerName() : String\l+ getCustomerPostalCode() : String\l+ getCustomerTown() : String\l}" ] 
+    DatabaseHandler [ label = "{DatabaseHandler | }" ] 
+    Invoice [ label = "{Invoice | + getCustomer() : Customer\l+ getDate() : String\l+ getProducts() : ArrayList<Product>\l+ getSeller() : Seller\l+ setCustomer(customer : Customer)\l+ setDate(date : String)\l+ setProducts(product : Product, input : Scanner)\l+ setSeller(seller : Seller)\l}" ] 
+    Product [ label = "{Product | + getPriceTax() : Double\l+ getProductCounter() : int\l+ getProductID() : int\l+ getProductName() : String\l+ getProductPrice() : Double\l+ setProductCounter(productCounter : int)\l}" ] 
+    Seller [ label = "{Seller | + getSellerAdress() : String\l+ getSellerID() : int\l+ getSellerNIP() : double\l+ getSellerName() : String\l+ getSellerPostalCode() : String\l+ getSellerTown() : String\l}" ] 
+    UserInterface [ label = "{UserInterface | + main(args : String[])\l}" ] 
+  }
+  DatabaseHandler -> Customer [ dir=back arrowtail=odiamond color=slategray];
+  DatabaseHandler -> Seller [ dir=back arrowtail=odiamond color=slategray];
+  Invoice -> Product [ dir=back arrowtail=odiamond color=slategray];
+  Invoice -> Customer [ dir=back arrowtail=odiamond color=slategray];
+  DatabaseHandler -> Product [ dir=back arrowtail=odiamond color=slategray];
+  AppManager -> DatabaseHandler [ dir=back arrowtail=odiamond color=slategray];
+  DatabaseHandler -> Invoice [ dir=back arrowtail=odiamond color=slategray];
+  Invoice -> Seller [ dir=back arrowtail=odiamond color=slategray];
+}

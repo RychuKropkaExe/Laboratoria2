@@ -12,7 +12,7 @@ public class UserInterface {
      */
     private static Scanner scanner = new Scanner(System.in);
     /**
-     * It takes users input to determine which action to make.
+     * It takes u3sers input to determine which action to make.
      */
     private static int choosenValue;
 

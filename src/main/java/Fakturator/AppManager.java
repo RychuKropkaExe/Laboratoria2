@@ -10,6 +10,10 @@ import java.util.Scanner;
 
 public class AppManager {
     private static DatabaseHandler dbhandler = new DatabaseHandler();
+    protected static int customerCounter=0;
+    protected static int sellerCounter=0;
+    protected static int productCounter=0;
+    protected static int invoiceCounter=0;
     /**
      * This class need to communicate with user, and
      * it gives him options preceed with numbers, and this
@@ -40,12 +44,13 @@ public class AppManager {
                     }
                     counter = 0;
                     choosenOption = Integer.parseInt(input.nextLine());
-                    dbhandler.invoicesList.get(dbhandler.invoiceCounter).setCustomer(dbhandler.customersList.get(choosenOption));
+                    dbhandler.setInvoiceCustomer(invoiceCounter, choosenOption);
                 }
             }
             if (choosenOption == 2) {
-                dbhandler.customersList.add(new Customer(input, dbhandler.customerCounter));
-                dbhandler.customerCounter++;
+                dbhandler.customersList.add(new Customer(input, customerCounter));
+                dbhandler.setInvoiceCustomer(invoiceCounter, customerCounter);
+                customerCounter++;
             }
             System.out.println("1: Wybierz sprzedawcę z istniejących \n"
                     + "2: Dodaj");
@@ -60,12 +65,13 @@ public class AppManager {
                     }
                     counter = 0;
                     choosenOption = Integer.parseInt(input.nextLine());
-                    dbhandler.invoicesList.get(dbhandler.invoiceCounter).setSeller(dbhandler.sellersList.get(choosenOption));
+                    dbhandler.setInvoiceSeller(invoiceCounter, choosenOption);
                 }
             }
             if (choosenOption == 2) {
-                dbhandler.sellersList.add(new Seller(input, dbhandler.sellerCounter));
-                dbhandler.sellerCounter++;
+                dbhandler.sellersList.add(new Seller(input, sellerCounter));
+                dbhandler.setInvoiceSeller(invoiceCounter, sellerCounter);
+                sellerCounter++;
             }
             while (true) {
                 System.out.println("1: Wybierz produkt z listy \n"
@@ -82,14 +88,14 @@ public class AppManager {
                         }
                         counter=0;
                         choosenOption = Integer.parseInt(input.nextLine());
-                        dbhandler.invoicesList.get(dbhandler.invoiceCounter).setProducts(dbhandler.productsList.get(choosenOption), input);
+                        dbhandler.setInvoiceProducts(invoiceCounter, choosenOption, input);
                     } else {
                         System.out.println("Brak produktów do wybrania, wprowadź odpowiednie do bazy");
                         throw new NullPointerException();
                     }
                 }
             }
-            dbhandler.invoicesList.get(dbhandler.invoiceCounter).setDate(new SimpleDateFormat("dd-MM-yyyy").format(new Date()));
+            dbhandler.invoicesList.get(invoiceCounter).setDate(new SimpleDateFormat("dd-MM-yyyy").format(new Date()));
         } catch (Exception e) {
             System.out.println(e);
             if(e instanceof NullPointerException) {
@@ -97,8 +103,8 @@ public class AppManager {
             } else {
                 System.out.println("Wystapił błąd, prosimy spróbować ponownie");
             }
-                dbhandler.invoicesList.set(dbhandler.invoiceCounter, null);
-                dbhandler.invoiceCounter--;
+                dbhandler.invoicesList.set(invoiceCounter, null);
+                invoiceCounter--;
         }
 
 
@@ -115,11 +121,39 @@ public class AppManager {
         }
         Invoice display = dbhandler.invoicesList.get(choosenOption);
         System.out.println("-----------------------------------------------------------------------------");
-        System.out.println(display.getDate());
-
+        System.out.println(display.getDate() + "\n");
+        System.out.println("Nabywca:");
+        display.getCustomer().printCustomer();
+        System.out.println(" ");
+        System.out.println("Sprzedawca: ");
+        display.getSeller().printSeller();
+        System.out.println(" ");
+        System.out.print("LP " + "Produkt");
+        if(dbhandler.getLongestProduct() > 7) {
+            for(int i = 0; i < dbhandler.getLongestProduct()-7; i++ ) {
+                System.out.print(" ");
+            }
+        }
+        System.out.print("Liczba" + " Wartość");
+        if(dbhandler.getLongestPrice() > 7) {
+            for(int i = 0; i < dbhandler.getLongestPrice()-8 ; i++) {
+                System.out.print(" ");
+            }
+        }
+        System.out.println("Podatek" +  " Wartość podatku");
+        for(Product product : display.getProducts()) {
+            counter++;
+            System.out.print(counter + " ");
+            product.printProduct();
+        }
+        counter=0;
+        System.out.println("-----------------------------------------------------------------------------");
     }
     public static void newValue(Scanner input) {
-        dbhandler.productsList.add(new Product(input, dbhandler.productCounter));
-        dbhandler.productCounter++;
+        dbhandler.productsList.add(new Product(input, productCounter));
+        productCounter++;
+    }
+    public static DatabaseHandler getDbhandler() {
+        return dbhandler;
     }
 }

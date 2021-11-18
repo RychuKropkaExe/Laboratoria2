@@ -1,0 +1,7 @@
+Fakturator\Product.class
+Fakturator\AppManager.class
+Fakturator\Seller.class
+Fakturator\DatabaseHandler.class
+Fakturator\Invoice.class
+Fakturator\Customer.class
+Fakturator\UserInterface.class

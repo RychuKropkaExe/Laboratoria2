@@ -1,4 +1,5 @@
 package Fakturator;
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class Product {
@@ -51,5 +52,29 @@ public class Product {
 
     public void setProductCounter(int productCounter) {
         this.productCounter = productCounter;
+    }
+    public void printProduct() {
+        System.out.print(productName);
+        if(productName.length() < AppManager.getDbhandler().getLongestProduct()) {
+            for(int k = 0; k < AppManager.getDbhandler().getLongestProduct() - productName.length();k++) {
+                System.out.print(" ");
+            }
+        }
+        System.out.print(" " + productCounter);
+        if(String.valueOf(productCounter).length() < 6) {
+            for(int i = 0; i < 6-String.valueOf(productCounter).length(); i++) {
+                System.out.print(" ");
+            }
+        }
+
+        System.out.print(" " + new BigDecimal(productPrice*productCounter).toPlainString());
+        if(String.valueOf(productPrice*productCounter).length() < AppManager.getDbhandler().getLongestPrice()) {
+            for (int i = 0; i < AppManager.getDbhandler().getLongestPrice() - String.valueOf(productPrice * productCounter).length(); i++) {
+                System.out.print(" ");
+            }
+        }
+
+        System.out.println(" " + priceTax + "%" + " "
+                + (priceTax/100)*productCounter*productPrice);
     }
 }

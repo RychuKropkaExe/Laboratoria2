@@ -54,4 +54,11 @@ public class Seller {
     public String getSellerTown() {
         return sellerTown;
     }
+    public void printSeller() {
+        System.out.println(sellerName);
+        System.out.println("NIP: " + sellerNIP);
+        System.out.println(sellerTown);
+        System.out.println(sellerAdress);
+        System.out.println(sellerPostalCode);
+    }
 }
