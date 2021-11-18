@@ -68,13 +68,17 @@ public class Product {
         }
 
         System.out.print(" " + new BigDecimal(productPrice*productCounter).toPlainString());
-        if(String.valueOf(productPrice*productCounter).length() < AppManager.getDbhandler().getLongestPrice()) {
-            for (int i = 0; i < AppManager.getDbhandler().getLongestPrice() - String.valueOf(productPrice * productCounter).length(); i++) {
+        if(String.valueOf(new BigDecimal(productPrice*productCounter)).length() < AppManager.getDbhandler().getLongestPrice()) {
+            for (int i = 0; i < AppManager.getDbhandler().getLongestPrice() - String.valueOf(new BigDecimal(productPrice*productCounter)).length(); i++) {
                 System.out.print(" ");
             }
         }
 
-        System.out.println(" " + priceTax + "%" + " "
-                + (priceTax/100)*productCounter*productPrice);
+        System.out.print(" " + priceTax + "%");
+        for(int i = 0; i < 6 - String.valueOf(priceTax).length(); i++) {
+            System.out.print(" ");
+        }
+        System.out.println(" "
+                + String.format("%.2f",new BigDecimal((priceTax/100)*productCounter*productPrice)));
     }
 }

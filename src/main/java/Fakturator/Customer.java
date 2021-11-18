@@ -13,8 +13,8 @@ public class Customer {
     private String customerPostalCode;
     private String customerTown;
 
-    public Customer(final Scanner input, final int customerID) {
-        this.customerID=customerID;
+    public Customer(final Scanner input, final int iD) {
+        this.customerID = iD;
         try {
             System.out.println("Podaj imię i nazwisko klienta lub nazwę firmy");
             customerName = input.nextLine();
@@ -30,27 +30,9 @@ public class Customer {
             System.out.println("Wystąpił Błąd, proszę spróbować jeszcze raz");
         }
     }
-
-    public String getCustomerTown() {
-        return customerTown;
-    }
-
-    public String getCustomerPostalCode() {
-        return customerPostalCode;
-    }
-
-    public String getCustomerAdress() {
-        return customerAdress;
-    }
-
-    public double getCustomerNIP() {
-        return customerNIP;
-    }
-
     public int getCustomerID() {
         return customerID;
     }
-
     public String getCustomerName() {
         return customerName;
     }
