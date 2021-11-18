@@ -1,3 +1,7 @@
+package Fakturator;
+
+import Fakturator.Seller;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 

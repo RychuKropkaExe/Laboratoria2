@@ -1,5 +1,9 @@
+package Fakturator;
+
+import Fakturator.Invoice;
+import Fakturator.Seller;
+
 import java.util.ArrayList;
-import java.util.Scanner;
 
 
 public class DatabaseHandler {

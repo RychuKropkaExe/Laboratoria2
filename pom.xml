@@ -30,7 +30,7 @@
                 <configuration>
                     <outputDirectory>${project.basedir}/target</outputDirectory>
                     <packages>
-                        <param>java</param>
+                        <param>Fakturator</param>
                     </packages>
                     <ignores>
                     </ignores>

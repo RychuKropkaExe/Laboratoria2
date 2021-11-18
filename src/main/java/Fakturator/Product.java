@@ -1,3 +1,4 @@
+package Fakturator;
 import java.util.Scanner;
 
 public class Product {
