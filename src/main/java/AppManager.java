@@ -1,6 +1,8 @@
 import javax.xml.crypto.Data;
 import java.awt.image.DataBuffer;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 public class AppManager {
@@ -84,6 +86,7 @@ public class AppManager {
                     }
                 }
             }
+            dbhandler.invoicesList.get(dbhandler.invoiceCounter).setDate(new SimpleDateFormat("dd-MM-yyyy").format(new Date()));
         } catch (Exception e) {
             System.out.println(e);
             if(e instanceof NullPointerException) {
@@ -97,10 +100,20 @@ public class AppManager {
 
 
     }
-    public static void showInvoice() {
-        System.out.println("działa");
+    public static void showInvoice(Scanner input) {
+        if(dbhandler.invoicesList.size() != 0) {
+            System.out.println("Wybierz którą fakturę chcesz wyświetlić:");
+            for (Invoice invoice : dbhandler.invoicesList) {
+                System.out.println(counter + ": " + (invoice.getCustomer()).getCustomerID() + " " + (invoice.getCustomer()).getCustomerName());
+            }
+            choosenOption = Integer.parseInt(input.nextLine());
+        } else {
+            System.out.println("Brak faktur do wyświetlenia");
+        }
+
     }
     public static void newValue(Scanner input) {
         dbhandler.productsList.add(new Product(input, dbhandler.productCounter));
+        dbhandler.productCounter++;
     }
 }

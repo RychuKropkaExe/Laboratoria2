@@ -32,7 +32,7 @@ public class UserInterface {
                     AppManager.invoiceMaker(scanner);
                     break;
                 case 2:
-                    AppManager.showInvoice();
+                    AppManager.showInvoice(scanner);
                     break;
                 case 3:
                     AppManager.newValue(scanner);
