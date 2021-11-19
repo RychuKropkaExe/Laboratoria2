@@ -19,15 +19,11 @@ public class Product {
     public Product(final Scanner input, int productID) {
         this.productID=productID;
         System.out.println("Podaj nazwę produktu");
-        try {
-            productName = input.nextLine();
-            System.out.println("Podaj cenę produktu");
-            productPrice = Double.parseDouble(input.nextLine());
-            System.out.println("Podaj wartość podatku dla tego produktu");
-            priceTax = Double.parseDouble(input.nextLine());
-        } catch (Exception e) {
-            System.out.println("Wystapił błąd, proszę spróbować ponownie");
-        }
+        productName = input.nextLine();
+        System.out.println("Podaj cenę produktu");
+        productPrice = Double.parseDouble(input.nextLine());
+        System.out.println("Podaj wartość podatku dla tego produktu");
+        priceTax = Double.parseDouble(input.nextLine());
     }
 
     public int getProductID() {
@@ -53,6 +49,14 @@ public class Product {
     public void setProductCounter(int productCounter) {
         this.productCounter = productCounter;
     }
+
+    /**
+     * A somewhat complicated method to print products data. The main problem is with scaling,
+     * therefore these long "if" statements that checks if size of printed value exceeds length
+     * of labels, or other products like for example, if one product name is shorter than another,
+     * it prints enough spaces to make sure that other values like quantity are displayed
+     * underneath proper label.
+     */
     public void printProduct() {
         System.out.print(productName);
         if(productName.length() < AppManager.getDbhandler().getLongestProduct()) {

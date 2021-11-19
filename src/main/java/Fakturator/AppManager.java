@@ -6,9 +6,18 @@ import java.util.Scanner;
 
 public final class AppManager {
     private AppManager() {
-
     }
+
+    /**
+     * An instance of a "storage".
+     */
     private static DatabaseHandler dbhandler = new DatabaseHandler();
+    /**
+     * All these variables are used to insert values to lists
+     * this program doesnt support removing data from storage
+     * so with simple incrementation i can insert as many values
+     * to list as i want.
+     */
     private static int customerCounter = 0;
     private static int sellerCounter = 0;
     private static int productCounter = 0;
@@ -29,8 +38,8 @@ public final class AppManager {
      * @param input we need to take users input so..
      */
     public static void invoiceMaker(final Scanner input) {
-        dbhandler.invoicesList.add(new Invoice());
         try {
+            dbhandler.invoicesList.add(new Invoice());
             System.out.println("Proszę wprowadzić odpowiednie dane do faktury \n"
                     + "Pamiętaj, że wszystkie dane muszą być poprawne \n"
                     + "by faktura została zaakceptowana \n");
@@ -102,14 +111,12 @@ public final class AppManager {
             dbhandler.invoicesList.get(invoiceCounter).setDate(new SimpleDateFormat("dd-MM-yyyy").format(new Date()));
             invoiceCounter++;
         } catch (Exception e) {
-            System.out.println(e);
             if (e instanceof NullPointerException) {
                 System.out.println("Nie można utworzyć faktury, gdyż nie ma z czego");
             } else {
                 System.out.println("Wystapił błąd, prosimy spróbować ponownie");
             }
-                dbhandler.invoicesList.set(invoiceCounter, null);
-                invoiceCounter--;
+                dbhandler.invoicesList.remove(invoiceCounter);
         }
 
 
@@ -123,6 +130,7 @@ public final class AppManager {
             choosenOption = Integer.parseInt(input.nextLine());
         } else {
             System.out.println("Brak faktur do wyświetlenia");
+            return;
         }
         Invoice display = dbhandler.invoicesList.get(choosenOption);
         System.out.println("-----------------------------------------------------------------------------");
@@ -156,9 +164,13 @@ public final class AppManager {
         counter = 0;
         System.out.println("-----------------------------------------------------------------------------");
     }
-    public static void newValue(Scanner input) {
-        dbhandler.productsList.add(new Product(input, productCounter));
-        productCounter++;
+    public static void newValue(final Scanner input) {
+        try {
+            dbhandler.productsList.add(new Product(input, productCounter));
+            productCounter++;
+        } catch (Exception e) {
+            System.out.println("Upewnij się, że wprowadzone dane są poprawne");
+        }
     }
     public static DatabaseHandler getDbhandler() {
         return dbhandler;
