@@ -3,10 +3,10 @@ package Fakturator;
 import java.util.Scanner;
 
 /**
- *Its a class to communicate with user, from which he can realize
- *the functions needed in this task.
+ *Its a starter class, with simple user interface, to make my life easier
+ * and allow me to freely start app, and then jump right to where i left.
  */
-public class UserInterface {
+public class StarterClass {
     /**
      * a scanner, nothing special.
      */
