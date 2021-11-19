@@ -40,6 +40,7 @@ public final class AppManager {
     public static void invoiceMaker(final Scanner input) {
         try {
             dbhandler.invoicesList.add(new Invoice());
+            dbhandler.invoicesList.get(invoiceCounter).setInvoiceID(invoiceCounter);
             System.out.println("Proszę wprowadzić odpowiednie dane do faktury \n"
                     + "Pamiętaj, że wszystkie dane muszą być poprawne \n"
                     + "by faktura została zaakceptowana \n");

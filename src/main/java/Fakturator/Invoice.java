@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Invoice {
+    private int invoiceID;
     private ArrayList<Product> products = new ArrayList<>();
     private Customer customer;
     private Seller seller;
@@ -21,6 +22,9 @@ public class Invoice {
         products.add(product);
     }
 
+    public void setInvoiceID(int iD) {
+        invoiceID = iD;
+    }
     public String getDate() {
         return date;
     }
