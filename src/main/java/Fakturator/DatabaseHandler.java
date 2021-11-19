@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 
-public class DatabaseHandler {
+public final class DatabaseHandler {
     /**
      * All these lists are the "storage" of the app.
      */

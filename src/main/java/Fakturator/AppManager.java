@@ -121,6 +121,11 @@ public final class AppManager {
 
 
     }
+
+    /**
+     * it prints Invoice.
+     * @param input a scanner.
+     */
     public static void showInvoice(final Scanner input) {
         if (dbhandler.invoicesList.size() != 0) {
             System.out.println("Wybierz którą fakturę chcesz wyświetlić:");
@@ -164,6 +169,11 @@ public final class AppManager {
         counter = 0;
         System.out.println("-----------------------------------------------------------------------------");
     }
+
+    /**
+     * A method to add new product, to list.
+     * @param input a scanner.
+     */
     public static void newValue(final Scanner input) {
         try {
             dbhandler.productsList.add(new Product(input, productCounter));

@@ -3,12 +3,12 @@ digraph domain {
   node [ shape=record ];
   subgraph cluster_0 {
     label = "Fakturator";
-    AppManager [ label = "{AppManager | + invoiceMaker(input : Scanner)\l+ newValue(input : Scanner)\l+ showInvoice(input : Scanner)\l}" ] 
-    Customer [ label = "{Customer | + getCustomerAdress() : String\l+ getCustomerID() : int\l+ getCustomerNIP() : double\l+ getCustomerName() : String\l+ getCustomerPostalCode() : String\l+ getCustomerTown() : String\l}" ] 
-    DatabaseHandler [ label = "{DatabaseHandler | }" ] 
+    AppManager [ label = "{AppManager | + getDbhandler() : DatabaseHandler\l+ invoiceMaker(input : Scanner)\l+ newValue(input : Scanner)\l+ showInvoice(input : Scanner)\l}" ] 
+    Customer [ label = "{Customer | + getCustomerID() : int\l+ getCustomerName() : String\l+ printCustomer()\l}" ] 
+    DatabaseHandler [ label = "{DatabaseHandler | + getLongestPrice() : int\l+ getLongestProduct() : int\l+ setInvoiceCustomer(invoiceIndex : int, customerIndex : int)\l+ setInvoiceProducts(invoiceIndex : int, productIndex : int, input : Scanner)\l+ setInvoiceSeller(invoiceIndex : int, sellerIndex : int)\l}" ] 
     Invoice [ label = "{Invoice | + getCustomer() : Customer\l+ getDate() : String\l+ getProducts() : ArrayList<Product>\l+ getSeller() : Seller\l+ setCustomer(customer : Customer)\l+ setDate(date : String)\l+ setProducts(product : Product, input : Scanner)\l+ setSeller(seller : Seller)\l}" ] 
-    Product [ label = "{Product | + getPriceTax() : Double\l+ getProductCounter() : int\l+ getProductID() : int\l+ getProductName() : String\l+ getProductPrice() : Double\l+ setProductCounter(productCounter : int)\l}" ] 
-    Seller [ label = "{Seller | + getSellerAdress() : String\l+ getSellerID() : int\l+ getSellerNIP() : double\l+ getSellerName() : String\l+ getSellerPostalCode() : String\l+ getSellerTown() : String\l}" ] 
+    Product [ label = "{Product | + getPriceTax() : Double\l+ getProductCounter() : int\l+ getProductID() : int\l+ getProductName() : String\l+ getProductPrice() : Double\l+ printProduct()\l+ setProductCounter(productCounter : int)\l}" ] 
+    Seller [ label = "{Seller | + getSellerAdress() : String\l+ getSellerID() : int\l+ getSellerNIP() : double\l+ getSellerName() : String\l+ getSellerPostalCode() : String\l+ getSellerTown() : String\l+ printSeller()\l}" ] 
     UserInterface [ label = "{UserInterface | + main(args : String[])\l}" ] 
   }
   DatabaseHandler -> Customer [ dir=back arrowtail=odiamond color=slategray];
