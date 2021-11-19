@@ -1,2 +1,9 @@
-Generalnie ta aplikacja ma(niestety nie w całości) taką strukturę, by bardzo łatwo było zamienić
-składowanie danych w listach, na składowanie danych w bazie
+Generalnie ta aplikacja ma(niestety nie w całości) taką strukturę, by w miarę łatwo było zamienić
+składowanie danych w listach, na składowanie danych w bazie danych. Każda składowana klasa, ma
+atrybut ID, a wszystkie atrubuty klas są łatwo składowalne. Niestety wyjątkiem jest tutaj klasa
+Invoice, która przez niedopatrzenie nie składuje ID klientów i sprzedawców, a same klasy Klient i Sprzedawca.
+Składowanie w listach jest zamiennikiem potrzebnym do sensownego działania aplikacji, np
+By móc wystawić wiele faktur, przy których nie trzeba za każdym razem wprowadzać tych samych danych.
+Stąd składowanie danych w lisatach. Wszelkie metody do dodawania wartości do faktury, a także same
+konstruktory klas, mogę(przynajmniej tak mi się wydaje) łatwo przekierować dane do bazy danych, a zastosowanie
+indeksów z list jako odwołań do baz danych zmniejsza potrzebną liczbę zmian.
